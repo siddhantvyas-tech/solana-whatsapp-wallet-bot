@@ -105,7 +105,7 @@ app.post('/my-address', async (req, res) => {
 
 app.post('/twilio', express.urlencoded({ extended: false }), async (req, res) => {
     const msg = req.body.Body?.trim().toLowerCase();
-    const phone = `+${req.body.From.replace('whatsapp:', '')}`;
+    const phone = req.body.From.replace('whatsapp:', '');
     console.log('📩 WhatsApp message:', msg, 'From:', phone);
 
     const twiml = new MessagingResponse();
